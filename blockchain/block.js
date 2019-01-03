@@ -1,4 +1,4 @@
-const SHA256 = require('crypto-js/sha256'); //returns an array of strings;
+const ChainUtil = require('../chain-util');
 const { DIFFICULTY, MINE_RATE } = require('../config');
 
 class Block {
@@ -46,7 +46,8 @@ class Block {
   }
 
   static hash(timestamp, lastHash, data, nonce, difficulty) {
-    return SHA256(`${timestamp}${lastHash}${data}${nonce}${difficulty}`).toString();
+    // return SHA256(`${timestamp}${lastHash}${data}${nonce}${difficulty}`).toString(); - is below toString() needed?
+    return ChainUtil.hash(`${timestamp}${lastHash}${data}${nonce}${difficulty}`).toString();
   }
 
   static blockHash(block) {
