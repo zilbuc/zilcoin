@@ -23,6 +23,7 @@ class Wallet {
   createTransaction(recipient, amount, transactionPool) {
     if (amount > this.balance) {
       console.log(`Transaction amount ${amount} exceeds ${this.balance}!`);
+      return;
     }
 
     let transaction = transactionPool.existingTransaction(this.publicKey);
@@ -35,6 +36,12 @@ class Wallet {
     }
 
     return transaction;
+  }
+
+  static blockchainWallet() {
+    const blockchainWallet = new this();
+    blockchainWallet.address = 'blockchain-wallet';
+    return blockchainWallet;
   }
 }
 

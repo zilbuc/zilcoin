@@ -10,7 +10,7 @@ class ChainUtil {
   }
 
   static id() {
-    return uuidV1;
+    return uuidV1();
   }
 
   static hash(data) {
